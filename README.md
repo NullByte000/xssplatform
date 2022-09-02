@@ -15,11 +15,6 @@
 
 在使用本工具前，请您务必审慎阅读、充分理解各条款内容，限制、免责条款或者其他涉及您重大权益的条款可能会以加粗、加下划线等形式提示您重点注意。 除非您已充分阅读、完全理解并接受本协议所有条款，否则，请您不要使用本工具。您的使用行为或者您以其他任何明示或者默示方式表示接受本协议的，即视为您已阅读并同意本协议的约束。  
 
-### 联系我
-
-![](http://oss.songboy.site/blog/20211212225324.png)
-
-![](http://oss.songboy.site/blog/be07f380d5b834650bc3bf1e7ab055d.jpg)
 
 
 ## 二、操作概要
@@ -30,7 +25,7 @@
 
 ## 三、下载源码
 
-github地址:`https://github.com/78778443/xssplatform`
+github地址:`https://github.com/NullByte000/xssplatform`
 
 首先通过cd命令将代码放到指定位置，参考命令如下
 
@@ -41,7 +36,7 @@ cd /Users/song/mycode/safe/
 之后通过git下载源码，参考命令如下:
 
 ```
-git clone https://github.com/78778443/xssplatform.git
+git clone https://github.com/NullByte000/xssplatform.git
 ```
 
 
@@ -167,15 +162,4 @@ permeate 渗透测试系统源码和搭建教程地址可以参考：`https://gi
 ![image](http://tuchuang.songboy.site/xssplatform/11.png)
 
 
-## 六、图书推荐
-
-如果对笔者的文章较为感兴趣，可以关注笔者新书《PHP Web安全开发实战》，现已在各大平台上架销售，封面如下图所示
-
-![image](http://tuchuang.songboy.site/xss2/19.png?1)
-
 --------------
-作者：汤青松
-
-日期：2018-12-08
-
-微信：songboy8888
