@@ -74,7 +74,7 @@ class DB_Mysql implements IDataBase
         $this->charset = $dbCharset;
         $this->tbPrefix = $tbPrefix;
 
-        $this->linkId = mysqli_connect($this->host, $this->username, $this->password);
+        $this->linkId = @mysqli_connect($this->host, $this->username, $this->password);
         if (!empty($this->linkId)) {
             mysqli_query($this->linkId, "SET NAMES '" . $this->charset . "'");
             if (mysqli_select_db($this->linkId, $this->database)) {
