@@ -2,10 +2,7 @@
 /**
  * DB.class.php database operator
  *
- * @author blue,email: blueforyou@163.com
  * $databaseType: mysql,mssql,oracle..
- * ----------------------------------------------------------------
- * OldCMS,site:http://www.oldcms.com
  */
 if (!defined('IN_OLDCMS')) {
     die('Access Denied');
@@ -141,7 +138,7 @@ class DB_Mysql implements IDataBase
     {
         $this->rows = array();
         $this->queryId = mysqli_query($this->linkId, $sql);
-        while ($row = mysqli_fetch_assoc($this->queryId)) {
+        while ($row = @mysqli_fetch_assoc($this->queryId)) {
             $this->rows[] = $row;
         }
         $this->rowsNum = count($this->rows);
@@ -152,7 +149,7 @@ class DB_Mysql implements IDataBase
     public function FirstRow($sql)
     {
         $this->queryId = mysqli_query($this->linkId, $sql);
-        $row = mysqli_fetch_assoc($this->queryId);
+        $row = @mysqli_fetch_assoc($this->queryId);
         if (!empty($row)) {
             $this->rowsNum = 1;
             return $row;
