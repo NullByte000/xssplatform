@@ -2,6 +2,7 @@
 /**
  * DB.class.php database operator
  *
+ * @author blue,email: blue@163.com
  * $databaseType: mysql,mssql,oracle..
  */
 if (!defined('IN_OLDCMS')) {
@@ -76,7 +77,7 @@ class DB_Mysql implements IDataBase
 
         $this->linkId = @mysqli_connect($this->host, $this->username, $this->password);
         if (!empty($this->linkId)) {
-            mysqli_query($this->linkId, "SET NAMES '" . $this->charset . "'");
+            @mysqli_query($this->linkId, "SET NAMES '" . $this->charset . "'");
             if (mysqli_select_db($this->linkId, $this->database)) {
                 return $this->linkId;
             }
@@ -90,16 +91,16 @@ class DB_Mysql implements IDataBase
     {
         if (!empty($this->linkId)) {
             if (!empty($this->queryId)) {
-                mysqli_free_result($this->queryId);
+                @mysqli_free_result($this->queryId);
             }
-            return mysqli_close($this->linkId);
+            return @mysqli_close($this->linkId);
         }
     }
 
     /* execute without result */
     public function Execute($sql)
     {
-        return mysqli_query($this->linkId, $sql);
+        return @mysqli_query($this->linkId, $sql);
     }
 
     /* auto execute type=>insert/update */
@@ -137,7 +138,7 @@ class DB_Mysql implements IDataBase
     public function Dataset($sql)
     {
         $this->rows = array();
-        $this->queryId = mysqli_query($this->linkId, $sql);
+        $this->queryId = @mysqli_query($this->linkId, $sql);
         while ($row = @mysqli_fetch_assoc($this->queryId)) {
             $this->rows[] = $row;
         }
@@ -148,7 +149,7 @@ class DB_Mysql implements IDataBase
     /* return first row */
     public function FirstRow($sql)
     {
-        $this->queryId = mysqli_query($this->linkId, $sql);
+        $this->queryId = @mysqli_query($this->linkId, $sql);
         $row = @mysqli_fetch_assoc($this->queryId);
         if (!empty($row)) {
             $this->rowsNum = 1;
@@ -163,7 +164,7 @@ class DB_Mysql implements IDataBase
     public function FirstColumn($sql)
     {
         $Columns = array();
-        $this->queryId = mysqli_query($this->linkId, $sql);
+        $this->queryId = @mysqli_query($this->linkId, $sql);
         while ($row = @mysqli_fetch_row($this->queryId)) {
             $Columns[] = $row[0];
         }
@@ -174,7 +175,7 @@ class DB_Mysql implements IDataBase
     /* return first value */
     public function FirstValue($sql)
     {
-        $this->queryId = mysqli_query($this->linkId, $sql);
+        $this->queryId = @mysqli_query($this->linkId, $sql);
         $row = @mysqli_fetch_row($this->queryId);
         if (!empty($row)) {
             $this->rowsNum = 1;
@@ -188,7 +189,7 @@ class DB_Mysql implements IDataBase
     /* last id */
     public function LastId()
     {
-        return mysqli_insert_id($this->linkId);
+        return @mysqli_insert_id($this->linkId);
     }
 }
 
